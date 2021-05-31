@@ -1,4 +1,4 @@
-import User from '../models/User';
+import Repo from '../models/Repo';
 import {getPaginate} from '../libs/getPaginate'
 
 const ReposController = {
@@ -27,7 +27,7 @@ const ReposController = {
     },
     index: async (req, res) => {
         try {
-            const listRepos = await User.find();
+            const listRepos = await Repo.find();
             res.send(listRepos)
         } catch (error){
             res.status(500).json({
@@ -38,11 +38,11 @@ const ReposController = {
     store: async (req, res) => {
         try {
         const newRepo = new Repo({
-                role: req.body.role ? req.body.role : false,
+    
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
-                phone: req.body.phone
+                stack: req.body.stack
             })
         const repoSave = await newRepo.save();
         res.json(repoSave)

@@ -20,7 +20,11 @@ const Repo = new Schema({
         required: true,
         trim: true
     },
-    stack: []
+    stack: {
+    type: String,
+    required: true,
+    trim: true
+    }
 }, 
 {
     versionKey: false,
